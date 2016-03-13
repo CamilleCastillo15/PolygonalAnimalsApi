@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,9 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+/*Route::group(['middleware' => ['web']], function () {
     //
-});
+});*/
+
+//La méthode Http get est utilisée, la variable name est optionnelle, le controlleur 'MonControlleur' est utilisé, ainsi que sa fonction index
+Route::get('/{name?}', 'MonControlleur@index');

@@ -36,6 +36,6 @@
 //except permet de définir les routes non importantes
 Route::resource('PolygonalAnimalsCreators', 'PolygonalAnimalsCreatorControlleur', ['except' => ['create', 'edit']]);
 
-Route::resource('PolygonalAnimals', 'PolygonalAnimalsControlleur', ['only' => ['index']]);
+Route::resource('PolygonalAnimals', 'PolygonalAnimalControlleur', ['only' => ['index']]);
 
 Route::resource('PolygonalAnimalsCreators.PolygonalAnimals', 'CreatorOfPolygonalAnimalsControlleur', ['except' => ['edit', 'create']]);

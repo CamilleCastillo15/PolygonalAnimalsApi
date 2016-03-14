@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\PolygonalAnimalsCreator;
 
+use App\Http\Requests\CreateCreatorRequest;
+
 class PolygonalAnimalsCreatorControlleur extends Controller
 {
 	/**
@@ -34,9 +36,15 @@ class PolygonalAnimalsCreatorControlleur extends Controller
 	 * @return Response
 	 */
 	//Cette fonction permet de créer des entrées
-	public function store()
+	public function store(CreateCreatorRequest $requete)
 	{
-		//
+		
+		$valeurs = $requete->only(['name', 'phone']);
+
+		PolygonalAnimalsCreator::create($valeurs);
+
+		return response()->json(['message' => "Creator correctement ajoute"], 201);
+
 	}
 
 	/**

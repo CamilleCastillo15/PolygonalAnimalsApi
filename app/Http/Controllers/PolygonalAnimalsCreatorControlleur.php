@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
+use App\PolygonalAnimalsCreator;
+
 class PolygonalAnimalsCreatorControlleur extends Controller
 {
 	/**
@@ -15,7 +17,15 @@ class PolygonalAnimalsCreatorControlleur extends Controller
 	//Cette fonction permet de lister les entrées avec leurs colonnes de la table PolygonalAnimalsCreator
 	public function index()
 	{
-		return 'Vous êtes sur l\'index!';
+		//return 'Vous êtes sur l\'index!';
+		
+		//Cela permet de renvoyer toutes les entrées de la table PolygonalAnimalsCreator et de les placer dans la variable $Creators
+		$Creators = PolygonalAnimalsCreator::all();
+
+		//La méthode json de l'objet response permet de convertir les données en JSON, le deuxième paramètre renvoie un code d'erreur
+		//data permet d'afficher un tableau de données json
+		return response()->json(['data' => $Creators], 200);
+
 	}
 
 	/**
@@ -38,7 +48,12 @@ class PolygonalAnimalsCreatorControlleur extends Controller
 	//Cette fonction permet d'afficher une entrée spécifiée
 	public function show($id)
 	{
-		//
+		$Creator = PolygonalAnimalsCreator::find($id);
+		if(!$Creator)
+		{
+			return response()->json(['message' => 'Ce creator n\'existe pas', 'code' => 404], 404);
+		}
+		return response()->json(['data' => $Creator], 200);
 	}
 
 	/**
@@ -50,7 +65,7 @@ class PolygonalAnimalsCreatorControlleur extends Controller
 	//Cette fonction permet de mettre à jour une entrée spécifiée
 	public function update($id)
 	{
-		//
+
 	}
 
 	/**

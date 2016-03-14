@@ -20,6 +20,7 @@ class PolygonalAnimalsTable extends Migration
             $table->string('img');
             $table->string('link');
             $table->integer('creator_id')->unsigned();
+            //On peut aussi spécifier la clé étrange de la table qui permet de la relier à une autre
             $table->foreign('creator_id')->references('id')->on('PolygonalAnimalsCreators');
             $table->timestamps();
         });

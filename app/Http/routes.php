@@ -31,4 +31,11 @@
 });*/
 
 //La méthode Http get est utilisée, la variable name est optionnelle, le controlleur 'MonControlleur' est utilisé, ainsi que sa fonction index
-Route::get('/{name?}', 'MonControlleur@index');
+//Route::get('/{name?}', 'MonControlleur@index');
+
+//except permet de définir les routes non importantes
+Route::resource('PolygonalAnimalsCreators', 'PolygonalAnimalsCreatorControlleur', ['except' => ['create', 'edit']]);
+
+Route::resource('PolygonalAnimals', 'PolygonalAnimalsControlleur', ['only' => ['index']]);
+
+Route::resource('PolygonalAnimalsCreators.PolygonalAnimals', 'CreatorOfPolygonalAnimalsControlleur', ['except' => ['edit', 'create']]);
